@@ -5,15 +5,15 @@ spring:
   datasource:
     url: jdbc:postgresql://localhost:5432/ead-authuser
     username: postgres
-    password: Master!@!44169900
+    password: banco123
 
-jpa:
-  hibernate:
-    ddl-auto: update
-    dialect: org.hibernate.dialect.PostgreSQLDialect
-    jdbc:
-      lob.non-contextual-creation: true
-
-  properties:
+  jpa:
     hibernate:
-      show_sql: true
+      ddl-auto: update
+      dialect: org.hibernate.dialect.PostgreSQLDialect
+      jdbc:
+        lob.non-contextual-creation: true
+
+    properties:
+      hibernate:
+        show_sql: true
