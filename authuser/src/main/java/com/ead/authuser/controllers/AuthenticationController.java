@@ -26,6 +26,13 @@ public class AuthenticationController {
     @PostMapping("/signup")
     public ResponseEntity<Object> registerUser(@RequestBody UserDto userDto){
 
+        //Verificação se o objeto já exite na base
+        if (userService.existsByUserName(userDto.getUserName())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Username is already taken!");
+        }
+        if (userService.existsByEmail(userDto.getEmail())){
+            return ResponseEntity.status(HttpStatus.CONFLICT).body("Error: Email is already taken!");
+        }
         var userModel = new UserModel();
         BeanUtils.copyProperties(userDto, userModel); //converter o objeto userDto em UserModel
         userModel.setUserStatus(UserStatus.ACTIVE);
